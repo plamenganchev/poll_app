@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ip_adress: MyString
+  poll: one
+
+two:
+  ip_adress: MyString
+  poll: two
