@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_20_093124) do
+ActiveRecord::Schema.define(version: 2018_12_20_223138) do
 
   create_table "answers", force: :cascade do |t|
     t.string "answer_content"
@@ -19,15 +19,6 @@ ActiveRecord::Schema.define(version: 2018_12_20_093124) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["poll_id"], name: "index_answers_on_poll_id"
-  end
-
-  create_table "ip_checks", force: :cascade do |t|
-    t.string "ip_adress"
-    t.integer "poll_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ip_adress"], name: "index_ip_checks_on_ip_adress"
-    t.index ["poll_id"], name: "index_ip_checks_on_poll_id"
   end
 
   create_table "polls", force: :cascade do |t|
@@ -42,8 +33,10 @@ ActiveRecord::Schema.define(version: 2018_12_20_093124) do
     t.integer "answer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "voter_ip"
     t.index ["answer_id", "poll_id"], name: "index_votes_on_answer_id_and_poll_id", unique: true
     t.index ["answer_id"], name: "index_votes_on_answer_id"
+    t.index ["poll_id", "voter_ip"], name: "index_votes_on_poll_id_and_voter_ip"
     t.index ["poll_id"], name: "index_votes_on_poll_id"
   end
 
