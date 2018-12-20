@@ -1,27 +1,37 @@
 class PollsController < ApplicationController
   def new
-    @poll = Poll.new
-    @poll.answers.build 
+    @poll = Poll.new 
+   #5.times { @poll.answers.build }
+ @poll.answers.build
   end
   
   def create
-    @poll = Poll.new(poll_params)
+    @poll = Poll.new(post_params)
+    @array = [] 
     if @poll.save
-      redirect_to @poll
+      respond_to do |format|
+      format.html { redirect_to @user }
+      format.js
     end
-      
+    else
+     render 'new'
+    end
   end
 
   def show
   end
   
+  def update
+ 
+  end
   
   private
   
-   def poll_params
-     params.require(:poll).permit(:question, answers_attributes: [:content])
-     #:content => [] 
+   def post_params
+     params.require(:poll).permit(:question, answers_attributes: [:id,:answer_content,:_destroy])
    end
+   
+
   
 end
 

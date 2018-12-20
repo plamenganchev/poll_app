@@ -1,0 +1,12 @@
+<h1>IT WORKED</h1>
+ <div class="field">
+  <%= form_for @poll do |f| %>
+  <h1><%= @poll.question %></h1>
+   <% @poll.answers.each do |l| %>
+   <h2><%=l.answer_content %></h2>
+   <!--<input type="radio" id="post_category_rails" name="poll[<%#l.answer_content%>]" value=<%#l.answer_content%> /> -->
+   <%= f.radio_button :question, l.answer_content %>
+   <%end%>
+   <%= f.submit "Vote" %>
+  <%end%>
+</div>

@@ -1,9 +1,24 @@
-<%= form_for @poll do |f| %>
-<%= f.label :question %>
-<%= f.text_area :question %><br / >
+<%= form_for @poll,remote: true do |f| %>
+ <div class="field">
+  <%= f.label :question %>
+   <br/>
+<%= f.text_area :question %>
+</div>
+ <h3>Answers</h3>
+ <div id='tasks'>
  <%= f.fields_for :answers do |answers_builder| %>
-  <%= answers_builder.label :content %>
-  <%= answers_builder.text_field :content %><br />
+ <%= render 'answer_fields', :f => answers_builder %>
  <%end%>
+ <div class='links'>
+  <%= link_to_add_association 'add answer', f, :answers %>
+      </div>
+ </div>
  <%= f.submit 'Submit' %>
 <%end%>
+<div id="graph">
+ 
+</div>
+<div id="question">
+ 
+ 
+</div>
