@@ -1,11 +1,12 @@
 <h1>IT WORKED</h1>
  <div class="field">
-  <%= form_for @poll do |f| %>
+  <%= form_for :vote,url: votes_path,method: :post do |f| %>
   <h1><%= @poll.question %></h1>
+   <%= f.hidden_field :poll_id, value: @poll.id  %>
    <% @poll.answers.each do |l| %>
    <h2><%=l.answer_content %></h2>
    <!--<input type="radio" id="post_category_rails" name="poll[<%#l.answer_content%>]" value=<%#l.answer_content%> /> -->
-   <%= f.radio_button :question, l.answer_content %>
+   <%= f.radio_button :answer_id, l.id %>
    <%end%>
    <%= f.submit "Vote" %>
   <%end%>
