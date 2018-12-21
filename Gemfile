@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.1'
+gem 'chartkick'
+gem 'highcharts-rails'
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.4.0'
 gem "cocoon"

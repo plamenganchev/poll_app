@@ -1,0 +1,6 @@
+<div class="col-md-2 col-md-offset-1 whitebackground">
+<% #to be updated with chartkick %>
+<%  @poll.answers.each do|m| %>
+<%= m.answer_content + " " + m.count.to_s %><br />
+<%end%>
+</div>

@@ -1,10 +1,11 @@
 <div class="col-md-2 col-md-offset-1 whitebackground">
 <h1>IT WORKED</h1>
  <div class="field">
-  <%= form_for :vote,url: votes_path,method: :post do |f| %>
+  <%= form_for :vote, url: votes_path, method: :post, remote: true do |f| %>
   <h1><%= @poll.question %></h1>
    <%= f.hidden_field :poll_id, value: @poll.id  %>
-   <%= f.hidden_field :p, value: @poll.id  %>
+   <%= hidden_field :polling_id, value: @poll.id  %>
+   <%= f.hidden_field :voter_ip,value: request.remote_ip  %>
    <% @poll.answers.each do |l| %>
    <h2><%=l.answer_content %></h2>
    <%= f.radio_button :answer_id, l.id%>
