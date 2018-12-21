@@ -7,8 +7,9 @@
    <%= hidden_field :polling_id, value: @poll.id  %>
    <%= f.hidden_field :voter_ip,value: request.remote_ip  %>
    <% @poll.answers.each do |l| %>
-   <h2><%=l.answer_content %></h2>
+   <label>
    <%= f.radio_button :answer_id, l.id%>
+    <%=l.answer_content %></label><br/>
    <%end%>
    <br/>
    <%= f.submit "Vote",class: "btn btn-primary" %>
