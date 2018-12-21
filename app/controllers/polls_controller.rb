@@ -1,4 +1,6 @@
-class PollsController < ApplicationController
+class PollsController < ApplicationController\
+   
+    
   def new
     @poll = Poll.new 
    #5.times { @poll.answers.build }
@@ -10,7 +12,7 @@ class PollsController < ApplicationController
     @array = [] 
     if @poll.save
       respond_to do |format|
-      format.html { redirect_to @user }
+      format.html { redirect_to root_url }
       format.js
     end
     else

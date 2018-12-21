@@ -1,0 +1,24 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+
+body {
+  background: linear-gradient(to right, #00d2ff, #928DAB);
+   background-size: auto, cover;
+}
+
+.whitebackground{
+  background-color: white;
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 25px;
+}
+
+.textfieldcolor{
+  border:1px solid #928DAB
+}
+.removetaskmargin{
+ margin-top: 5px;  
+}
