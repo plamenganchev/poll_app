@@ -4,4 +4,5 @@ class Vote < ApplicationRecord
   
   validates :voter_ip, length: { maximum: 15}, presence: true
   validates :answer_id, presence: true
+  validates :poll_id, presence: true
 end
