@@ -36,12 +36,14 @@ def check_ip
     ip = request.remote_ip
     @voted_flag = false
     @poll = Poll.find_by(share_token: params[:id])
+    if !@poll.votes.first.nil?#if db is reseted then @poll.votes raised error
     @poll.votes.each do |m|
      if m.voter_ip == ip
       @voted_flag = true
       return
      end
     end
+  end
    end#end ofcheck_ip
   
 end

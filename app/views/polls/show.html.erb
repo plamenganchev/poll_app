@@ -1,9 +1,11 @@
 <div class="grid">
   <div class="row">
+    <div id="graph">
   <% if @voted_flag %>
   <%= render 'shared/graph' %>
   <% else %>
  <%= render 'shared/poll' %>
+ </div>
  <%end%>
 </div>
  <div class="row">
