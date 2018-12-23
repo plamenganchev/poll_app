@@ -1,2 +1,14 @@
-<%= render 'shared/poll' %>
-
+<div class="grid">
+  <div class="row">
+  <% if @voted_flag %>
+  <%= render 'shared/graph' %>
+  <% else %>
+ <%= render 'shared/poll' %>
+ <%end%>
+</div>
+ <div class="row">
+   <div class="col-md-2 col-md-offset-1 newpath ">
+<%= link_to "New Poll", new_poll_url ,class: "btn btn-primary buttonfullscreen"%>
+</div>
+</div>
+</div>

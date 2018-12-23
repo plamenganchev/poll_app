@@ -1,5 +1,5 @@
-class PollsController < ApplicationController\
-   
+class PollsController < ApplicationController
+    before_action :check_ip, only: [:show]
     
   def new
     @poll = Poll.new 
@@ -20,7 +20,6 @@ class PollsController < ApplicationController\
   end
 
   def show
-    @poll = Poll.find_by(share_token: params[:id])
   end
   
   def update
@@ -33,7 +32,17 @@ class PollsController < ApplicationController\
      params.require(:poll).permit(:question, answers_attributes: [:id,:answer_content,:_destroy])
    end
    
-
+def check_ip
+    ip = request.remote_ip
+    @voted_flag = false
+    @poll = Poll.find_by(share_token: params[:id])
+    @poll.votes.each do |m|
+     if m.voter_ip == ip
+      @voted_flag = true
+      return
+     end
+    end
+   end#end ofcheck_ip
   
 end
 

@@ -4,7 +4,6 @@
   <%= form_for :vote, url: votes_path, method: :post, remote: true do |f| %>
   <h1><%= @poll.question %></h1>
    <%= f.hidden_field :poll_id, value: @poll.id  %>
-   <%= hidden_field :polling_id, value: @poll.id  %>
    <%= f.hidden_field :voter_ip,value: request.remote_ip  %>
    <% @poll.answers.each do |l| %>
    <label>
@@ -15,5 +14,6 @@
    <%= f.submit "Vote",class: "btn btn-primary" %>
   <%end%>
 </div>
-<%= link_to "Share", poll_path(@poll.share_token) %>
+<%= label :share,"URL to share: " %>
+<input type="text" name="fname" value=<%= poll_url(@poll.share_token) %>><br>
 </div>

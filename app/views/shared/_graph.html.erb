@@ -1,8 +1,14 @@
 <div class="col-md-2 col-md-offset-1 whitebackground">
 <% #to be updated with chartkick %>
+<% a = [] %>
+<% b = [] %>
 <%  @poll.answers.each do|m| %>
-<%= m.answer_content + " " + m.count.to_s %><br />
+<% #m.answer_content + " " + m.count.to_s %>
+<% a.push(m.answer_content.to_sym) %>
+<% b.push(m.count.to_s) %>
+<%=  h = Hash[a.zip b]%>
+<%= pie_chart(h) %>
 <%end%>
-
-<%= link_to "Share", poll_path(@poll.share_token) %>
+<%= label :share,"URL to share: " %>
+<input type="text" name="fname" value=<%= poll_url(@poll.share_token) %>><br>
 </div>
