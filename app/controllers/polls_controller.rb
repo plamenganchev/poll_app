@@ -9,8 +9,7 @@ class PollsController < ApplicationController\
   
   def create
     @poll = Poll.new(post_params)
-    @array = [] 
-    if @poll.save
+    if @poll.save && !@poll.answers.first.nil? && !@poll.answers.second.nil?
       respond_to do |format|
       format.html { redirect_to root_url }
       format.js
@@ -21,6 +20,7 @@ class PollsController < ApplicationController\
   end
 
   def show
+    @poll = Poll.find_by(share_token: params[:id])
   end
   
   def update

@@ -15,4 +15,5 @@
    <%= f.submit "Vote",class: "btn btn-primary" %>
   <%end%>
 </div>
+<%= link_to "Share", poll_path(@poll.share_token) %>
 </div>

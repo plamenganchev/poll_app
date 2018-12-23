@@ -3,4 +3,6 @@
 <%  @poll.answers.each do|m| %>
 <%= m.answer_content + " " + m.count.to_s %><br />
 <%end%>
+
+<%= link_to "Share", poll_path(@poll.share_token) %>
 </div>
