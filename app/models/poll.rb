@@ -8,7 +8,15 @@ class Poll < ApplicationRecord
   validates :share_token, uniqueness: true
   before_create :create_share_token
   
-  
+  def create_hash_for_chartkick
+   a = []
+   b = []
+   self.answers.each do |m|
+    a.push(m.answer_content.to_sym)
+    b.push(m.count.to_s)
+   end
+   h = Hash[a.zip b]
+  end
   
   class << self
     

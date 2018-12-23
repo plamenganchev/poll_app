@@ -1,19 +1,21 @@
 <div class="col-md-2 col-md-offset-1 whitebackground">
-<h1>IT WORKED</h1>
  <div class="field">
   <%= form_for :vote, url: votes_path, method: :post, remote: true do |f| %>
-  <h1><%= @poll.question %></h1>
+   <h1><%= @poll.question %></h1>
    <%= f.hidden_field :poll_id, value: @poll.id  %>
    <%= f.hidden_field :voter_ip,value: request.remote_ip  %>
    <% @poll.answers.each do |l| %>
-   <label>
-   <%= f.radio_button :answer_id, l.id%>
+    <label>
+    <%= f.radio_button :answer_id, l.id%>
     <%=l.answer_content %></label><br/>
    <%end%>
    <br/>
    <%= f.submit "Vote",class: "btn btn-primary" %>
   <%end%>
 </div>
+<div class="copyButton">
+<button onclick="myFunction(this)" id="moveButton" class="btn btn-primary">Copy share link</button><br/>
 <%= label :share,"URL to share: " %>
-<input type="text" name="fname" value=<%= poll_url(@poll.share_token) %>><br>
+<input type="text" name="fname" id="myInput"  value=<%= poll_url(@poll.share_token)%> ><br>
+</div>
 </div>

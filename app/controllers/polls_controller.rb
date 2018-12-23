@@ -3,8 +3,7 @@ class PollsController < ApplicationController
     
   def new
     @poll = Poll.new 
-   #5.times { @poll.answers.build }
- @poll.answers.build
+    @poll.answers.build
   end
   
   def create
@@ -32,20 +31,20 @@ class PollsController < ApplicationController
      params.require(:poll).permit(:question, answers_attributes: [:id,:answer_content,:_destroy])
    end
    
-def check_ip
-    ip = request.remote_ip
-    @voted_flag = false
-    @poll = Poll.find_by(share_token: params[:id])
-    if !@poll.votes.first.nil?#if db is reseted then @poll.votes raised error
-    @poll.votes.each do |m|
-     if m.voter_ip == ip
-      @voted_flag = true
-      return
+ def check_ip
+   ip = request.remote_ip
+   @voted_flag = false
+   @poll = Poll.find_by(share_token: params[:id])
+   if @poll &&!@poll.votes.first.nil?#if db is reseted then @poll.votes raised error
+     @poll.votes.each do |m|
+      if m.voter_ip == ip
+       @voted_flag = true
+       return
+      end
      end
-    end
-  end
-   end#end ofcheck_ip
+   end
+ end#end ofcheck_ip
   
-end
+end#endofclass
 
 
