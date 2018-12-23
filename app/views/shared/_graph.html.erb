@@ -6,9 +6,9 @@
 <% #m.answer_content + " " + m.count.to_s %>
 <% a.push(m.answer_content.to_sym) %>
 <% b.push(m.count.to_s) %>
+<%end%>
 <%= h = Hash[a.zip b]%>
 <%= pie_chart(h) %>
-<%end%>
 <%= label :share,"URL to share: " %>
 <input type="text" name="fname" value=<%= poll_url(@poll.share_token) %>><br>
 </div>
