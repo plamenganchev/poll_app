@@ -6,7 +6,7 @@
 <% #m.answer_content + " " + m.count.to_s %>
 <% a.push(m.answer_content.to_sym) %>
 <% b.push(m.count.to_s) %>
-<%=  h = Hash[a.zip b]%>
+<%= h = Hash[a.zip b]%>
 <%= pie_chart(h) %>
 <%end%>
 <%= label :share,"URL to share: " %>
